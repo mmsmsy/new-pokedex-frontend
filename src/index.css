@@ -1,0 +1,226 @@
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@font-face {
+    font-family: "Pokemon Hollow";
+    src: url(pokemon_hollow.ttf);
+}
+@font-face {
+    font-family: "Pokemon Solid";
+    src: url(pokemon_solid.ttf);
+}
+html, body{
+  font-family: sans-serif;
+  background: linear-gradient(to right, #25c481, #25b7c4);
+    text-align : center;
+  overflow-x: hidden;
+}
+a:link,
+a:visited {
+    display: block;
+    color: #207394;
+    font-weight: bold;
+    font-family: sans-serif;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+.pokeapp {
+    padding : 16px;
+}
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  width: 20%;
+  float: left;
+  padding: 0;
+  margin: 0;
+}
+.pokeapp h1 {
+    width: 80%;
+    font-family: "Pokemon Solid";
+    color: #ffcb05;
+    text-shadow: 5px 5px 1px #2a75bb, -5px -5px 1px #2a75bb;
+    font-size: 36px;
+    letter-spacing: 5px;
+    float: right;
+    padding: 0;
+    margin: 0;
+}
+.pokeapp p {
+    font-family: "Pokemon Hollow";
+    font-size: 20px;
+    text-shadow: none;
+    color: black;
+}
+.pokemon--loading {
+    font-family: "Pokemon Hollow";
+    color: gray;
+    font-size: 72px;
+    position: absolute; top: 50%; left: 50%;
+    transform: translateX(-50%);
+}
+.pokemon--species--list{
+    width: 100%;
+    text-align: center;
+    display : -webkit-box;
+    display : -ms-flexbox;
+    display : flex;
+    -ms-flex-wrap : wrap;
+        flex-wrap : wrap;
+    padding : 16px 0;
+    margin-top: 200px;
+}
+.pokemon--species{
+    font-size: 16px;
+    -ms-flex-preferred-size : 25%;
+        flex-basis : 25%;
+    padding : 8px;
+    box-sizing: border-box;
+
+}
+.pokemon--species--container{
+    width: 100%;
+    overflow: hidden;
+    padding : 8px;
+    margin-top: 50px;
+    background: transparent;
+    cursor : pointer;
+    box-shadow: 1px 1px 10px rgba(0,0,0,0.1);
+    transition: all 0.2s;
+}
+.pokemon--species--container:hover {
+    background: #25c481;
+    box-shadow: 2px 2px 10px white, -2px -2px 10px white;
+    transform: scale(1.1);
+}
+.pokemon--species--container img {
+    width: 100%;
+}
+a.back--to--list {
+    width: 100%;
+    overflow: hidden;
+    padding: 20px 0;
+    border-radius: 5px;
+    border: 1px solid rgba(255,255,255,0.3);
+    position: relative; top: 20px;
+}
+.back--to--list:hover {
+    border: 1px solid white;
+}
+a.link--to--next,
+a.link--to--prev,
+a.link--to--next--list,
+a.link--to--prev--list {
+    width: auto;
+    padding: 50px 20px;
+    border-radius: 5px;
+    border: 1px solid rgba(255,255,255,0.3);
+    margin: 0;
+}
+a.link--to--next,
+a.link--to--prev {
+    position: absolute; top: 40%;
+}
+a.link--to--next--list,
+a.link--to--prev--list {
+    width: 10%;
+    position: absolute; top: 150px;
+}
+#lower--nav {
+    width: 100%;
+    position: static;
+}
+a.link--to--next--list2,
+a.link--to--prev--list2 {
+    width: 100%;
+    padding: 50px 20px;
+    border-radius: 5px;
+    border: 1px solid rgba(255,255,255,0.3);
+    position: static;
+}
+a.link--to--next--list2:hover,
+a.link--to--prev--list2:hover {
+    border: 1px solid white;
+}
+a.link--to--next,
+a.link--to--next--list {
+    border-right: 0;
+    right: 0;
+}
+a.link--to--prev,
+a.link--to--prev--list {
+    border-left: 0;
+    left: 0;
+}
+a.link--to--next:hover,
+a.link--to--prev:hover,
+a.link--to--next--list:hover,
+a.link--to--prev--list:hover {
+    border: 1px solid white;
+}
+a.link--to--next:hover,
+a.link--to--next--list:hover {
+    border-right: 0;
+}
+a.link--to--prev:hover,
+a.link--to--prev--list:hover {
+    border-left: 0;
+}
+.pokemon--details {
+    display: block;
+    width: 100%;
+    color: #4b4b4b;
+    font-size: 28px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+.pokemon--details img {
+    width: 50%;
+    margin-top: 100px;
+}
+.pokemon--details table {
+    width: 100%;
+    margin: 0 auto;
+}
+.pokemon--details td {
+    width: 50%;
+    text-align: left;
+    padding: 10px 0 10px 10%;
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+}
+.pokemon--details td:first-child {
+    border-right: 10px solid rgba(255,255,255,0.3);
+    font-weight: bold;
+}
+
+@media only screen and (min-width: 1100px) {
+    .App-logo {
+      width: 10%;
+    }
+    .pokemon--species--container {
+        width: 90%;
+    }
+    .pokemon--species {
+        -ms-flex-preferred-size : 12.5%;
+            flex-basis : 12.5%;
+    }
+    .pokemon--species--container img {
+        width: 75%;
+    }
+    a.back--to--list {
+        width: 40%;
+        margin-top: 200px;
+        left: 50%;
+    }
+    .pokemon--details img {
+        width: 25%;
+        float: left;
+        margin: 0 0 0 10%;
+    }
+    .pokemon--details table {
+        width: 40%;
+        float: right;
+        margin: 100px 10% 0 0;
+    }
+}
