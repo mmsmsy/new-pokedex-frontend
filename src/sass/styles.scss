@@ -1,0 +1,230 @@
+@font-face {
+  font-family: 'Pokemon Solid';
+  src: url('fonts/pokemon_solid.ttf');
+}
+@font-face {
+  font-family: 'Pokemon Hollow';
+  src: url('fonts/pokemon_hollow.ttf');
+}
+@font-face {
+  font-family: 'Myriad Pro Cond';
+  src: url('fonts/MYRIADPRO-COND.OTF');
+}
+@font-face {
+  font-family: 'Myriad Pro';
+  src: url('fonts/MYRIADPRO-REGULAR.OTF');
+}
+@font-face {
+  font-family: 'Myriad Pro';
+  src: url('fonts/MYRIADPRO-BOLD.OTF');
+  font-weight: bold;
+}
+@mixin font-size($size: 1.6) {
+  font-size: ($size * 10) + px;
+}
+@mixin text-shadow($size: 3) {
+  text-shadow: $size + px $size + px 0 #2a75bb, (- $size) + px (- $size) + px 0 #2a75bb;
+}
+@mixin display-flex() {
+  width: 100%;
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: wrap;
+  -webkit-justify-content: space-around;
+  justify-content: space-around;
+}
+@mixin nav--button($media: 1.6) {
+  @include font-size($media);
+  padding: 20px 0;
+  margin: auto;
+  color: #2a75bb;
+  padding: 1em;
+  border: 0.2em solid #2a75bb;
+  border-radius: 1em;
+  margin: 20px 0;
+  @include transition();
+}
+@mixin transition($time: 0.2) {
+  transition: all $time + s;
+}
+
+html,
+body {
+  font-family: 'Myriad Pro Cond';
+  background: linear-gradient(to bottom, #25c481, #25b7c4);
+}
+a:link,
+a:visited {
+  text-decoration: none;
+}
+#pokedex {
+  h1 {
+    width: 100%;
+    font-family: 'Pokemon Solid';
+    @include font-size(2.4);
+    color: #ffcb05;
+    @include text-shadow();
+    text-align: center;
+  }
+}
+#pokemon--list {
+  @include display-flex();
+
+  :first-child {
+    border-bottom: 3px double transparent;
+  }
+  .nav {
+    @include display-flex();
+    font-family: 'Myriad Pro';
+    font-weight: bold;
+    border: 0;
+
+    .nav-prev {
+      @include nav--button();
+    }
+    .nav-next {
+      @include nav--button();
+    }
+    .nav-prev:hover {
+      color: #2a75bb + 100;
+      border-color: #2a75bb + 100;
+    }
+    .nav-next:hover {
+      color: #2a75bb + 100;
+      border-color: #2a75bb + 100;
+    }
+  }
+  .pokemon--item {
+    width: 120px;
+    @include font-size();
+    text-transform: capitalize;
+    text-align: center;
+    overflow: hidden;
+    padding: 20px 0;
+    margin: 5px;
+
+    :first-child {
+      color: #2a75bb;
+      @include transition();
+    }
+    :last-child {
+      @include transition();
+    }
+    img {
+      width: 100%;
+    }
+  }
+  .pokemon--item:hover {
+    :first-child {
+      color: #2a75bb + 100;
+      border-color: #2a75bb + 100;
+    }
+    :last-child {
+      transform: scale(1.1);
+    }
+  }
+}
+#pokemon--details {
+  @include display-flex();
+
+  :first-child {
+    border-bottom: 3px double transparent;
+  }
+  .nav {
+    @include display-flex();
+    font-family: 'Myriad Pro';
+    font-weight: bold;
+    border: 0;
+    
+    .nav-back-to-list {
+      @include nav--button();
+    }
+    .nav-prev {
+      @include nav--button();
+    }
+    .nav-next {
+      @include nav--button();
+    }
+    .nav-back-to-list:hover {
+      color: #2a75bb + 100;
+      border-color: #2a75bb + 100;
+    }
+    .nav-prev:hover {
+      color: #2a75bb + 100;
+      border-color: #2a75bb + 100;
+    }
+    .nav-next:hover {
+      color: #2a75bb + 100;
+      border-color: #2a75bb + 100;
+    }
+  }
+  #pokemon--details--sprite {
+    width: 100%;
+    text-align: center;
+
+    img {
+      width: 90%;
+    }
+  }
+  table {
+    width: 100%;
+    margin: 0 auto;
+
+    td {
+      width: 50%;
+      text-align: left;
+      padding: 10px 0 10px 10%;
+      border-bottom: 1px solid rgba(255,255,255,0.3);
+    }
+    td:first-child {
+      border-right: 10px solid rgba(255,255,255,0.3);
+      border-bottom: 1px solid rgba(255,255,255,0.3);
+      font-weight: bold;
+    }
+  }
+}
+#pokemon--loading {
+  width: 100%;
+  font-family: 'Pokemon Hollow';
+  @include font-size(2);
+  text-align: center;
+}
+@media only screen and (min-width: 1100px) {
+  #pokedex {
+    border-top: 10px double #2a75bb;
+    border-bottom: 10px double #2a75bb;
+    margin-bottom: 50px;
+
+    h1 {
+      @include font-size(4.8);
+      color: #ffcb05;
+      @include text-shadow(6);
+      text-align: center;
+    }
+  }
+  #pokemon--list {
+    .nav {
+      @include display-flex();
+      .nav-prev {
+        @include nav--button(3.2);
+      }
+      .nav-next {
+        @include nav--button(3.2);
+      }
+    }
+    .pokemon--item {
+      width: 240px;
+      @include font-size(2.4);
+      margin: 10px;
+    }
+  }
+  #pokemon--details {
+    #pokemon--details--sprite {
+      width: 50%;
+    }
+    table {
+      width: 50%;
+      margin-top: 10%;
+    }
+  }
+}

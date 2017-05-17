@@ -54,11 +54,13 @@ class PokemonDetails extends Component{
       'textTransform': 'capitalize'
     }
     return (
-      <div className="pokemon--details">
-        <Link className="back--to--list" to="/">Back to the list</Link>
-        <Link className="link--to--next" to={`/pokemons/${outOfRange(id,1)}`}>Next</Link>
-        <Link className="link--to--prev" to={`/pokemons/${outOfRange(id,-1)}`}>Prev</Link>
-        <div className="pokemon--details--sprite">
+      <div id="pokemon--details">
+        <div className="nav">
+          <Link className="nav-back-to-list" to="/">Back to the list</Link>
+          <Link className="nav-prev" to={`/pokemons/${outOfRange(id,-1)}`}>Prev</Link>
+          <Link className="nav-next" to={`/pokemons/${outOfRange(id,1)}`}>Next</Link>
+        </div>
+        <div id="pokemon--details--sprite">
           <img src={`/spriteshq/${id}.png`} alt={pokemon.name} />
         </div>
         <table style={styles}>
@@ -67,7 +69,7 @@ class PokemonDetails extends Component{
           <tbody><tr><td>Type</td><td>{pokemonType}</td></tr></tbody>
           <tbody><tr><td>Base experience</td><td>{pokemon.base_experience}</td></tr></tbody>
           <tbody><tr><td>Weight</td><td>Avg. {parseFloat(Math.round(pokemon.weight) / 10).toFixed(1)}kg ({parseFloat(Math.round(pokemon.weight * 2) / 100).toFixed(2)} - {parseFloat(Math.round(pokemon.weight*18) / 100).toFixed(2)})</td></tr></tbody>
-          <tbody><tr><td>Height</td><td>{pokemon.height*10}cm ({pokemon.height*6} - {pokemon.height*14})</td></tr></tbody>
+          <tbody><tr><td>Height</td><td>Avg. {pokemon.height*10}cm ({pokemon.height*6} - {pokemon.height*14})</td></tr></tbody>
         </table>
       </div>
     )

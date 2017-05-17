@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import Pokemon from '../Pokemon/Pokemon';
+import Pokemon from './/Pokemon';
 
 class PokemonList extends Component {
   constructor(props) {
@@ -33,7 +33,8 @@ class PokemonList extends Component {
       this.componentDidMount()
   }
   render() {
-    const howMany = (addition, slicing = false) => {
+    // return next or previous number based on the part of the list you're at, so that you can generate links or pokemon--list (when slice === true) dynamically
+    const showThesePokemon = (addition, slicing = false) => {
       let amount = parseInt(this.props.match.params.amount,10);
       if ( ((amount + addition) < 1 && !slicing) || ((amount + addition ) > 899 && !slicing)) return '';
       if ( ((amount + addition) < 1 && slicing) || ((amount + addition ) > 899 && slicing)) return 811;
@@ -45,27 +46,25 @@ class PokemonList extends Component {
     const {fetched, loading} = this.state;
     const pokemons = this.state.pokemons
                       .sort((a,b) => a.id - b.id)
-                      .slice(howMany(0),howMany(100,true))
+                      .slice(showThesePokemon(0),showThesePokemon(100,true))
                       .map(pokemon => <Pokemon key={pokemon.name} id={pokemon.id} pokemonName={pokemon.name}/>)
     
     if(fetched){
       return (
-        <div className="pokemon--species--list">
-          <Link className="link--to--next--list" to={`/${howMany(100)}`}>Next 100</Link>
-          <Link className="link--to--prev--list" to={`/${howMany(-100)}`}>Prev 100</Link>
+        <div id="pokemon--list">
+          <div className="nav">
+            <Link className="nav-prev" to={`/${showThesePokemon(-100)}`}>Prev 100</Link>
+            <Link className="nav-next" to={`/${showThesePokemon(100)}`}>Next 100</Link>
+          </div>
           {pokemons}
-          <div id="lower--nav">
-            <Link className="link--to--next--list2" to={`/${howMany(100)}`}>Next 100</Link>
-            <Link className="link--to--prev--list2" to={`/${howMany(-100)}`}>Prev 100</Link>
+          <div className="nav">
+            <Link className="nav-prev" to={`/${showThesePokemon(-100)}`}>Prev 100</Link>
+            <Link className="nav-next" to={`/${showThesePokemon(100)}`}>Next 100</Link>
           </div>
         </div>
       );
-    }else if(loading && !fetched){
-        return <p className="pokemon--loading"> Loading ...</p>;
-    }
-    else{
-      return <div/>;
-    }
+    } else if(loading && !fetched) return <p id="pokemon--loading"> Loading ...</p>;
+    return <div/>;
   }
 }
 
